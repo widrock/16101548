@@ -18,3 +18,18 @@ function query($query)
 
   return $rows;
 }
+
+function tambah($data)
+{
+  $conn = conn();
+
+  $nim = htmlspecialchars($data['nim']);
+  $nama = htmlspecialchars($data['nama']);
+  $jurusan = htmlspecialchars($data['jurusan']);
+  $email = htmlspecialchars($data['email']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  mysqli_query($conn, "INSERT INTO mahasiswa VALUES ('', '$nama', '$nim', '$jurusan', '$email', '$gambar')");
+
+  return mysqli_affected_rows($conn);
+}
